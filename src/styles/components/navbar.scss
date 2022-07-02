@@ -1,0 +1,75 @@
+@import "../variables";
+
+@media screen and (max-width: 500px) {
+  .desktop-navbar {
+    display: none !important;
+    width: $student-dashboard-width-mobile !important;
+  }
+  .mobile-navbar {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .desktop-navbar {
+    width: $student-dashboard-width-laptop !important;
+  }
+}
+
+.desktop-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: $student-dashboard-width;
+  margin: 0 auto;
+}
+.mobile-navbar {
+  display: none;
+  i {
+    font-size: 20px;
+    color: $black;
+    margin-top: 20px;
+  }
+}
+.ant-layout-header {
+  padding: 0 30px !important;
+}
+.navbar {
+  background-color: transparent !important;
+  border: none !important;
+}
+.navbar-user-details-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.navbar-user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 9px;
+  margin-top: 3px;
+}
+.navbar-user-name,
+.navbar-user-code {
+  line-height: normal;
+  font-size: 12px;
+}
+.navbar-user-name {
+  color: $gray-800;
+}
+.navbar-user-code {
+  color: $gray-600;
+}
+.log-out {
+  color: rgb(230, 49, 49) !important;
+  color: $red-danger;
+  cursor: pointer;
+  font-size: 17px !important;
+  width: 35px !important;
+  height: 35px !important;
+  transition-duration: 0.5s;
+  &:hover {
+    transition-duration: 0.5s;
+    background: $red-danger-light-hover;
+  }
+}

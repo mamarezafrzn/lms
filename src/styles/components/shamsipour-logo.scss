@@ -1,0 +1,45 @@
+@import "../variables";
+
+.logo-component-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.logo-wrapper {
+  margin-bottom: 12px;
+  direction: ltr;
+}
+.first-title {
+  color: $black;
+}
+.second-title {
+  color: $gray-600;
+}
+.log-out {
+  color: $red-danger;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+  transition-duration: 0.5s;
+  &:hover {
+    transition-duration: 0.5s;
+    background: $red-danger-light-hover;
+  }
+}
+.edit-profile {
+  color: $dark-secondary;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+  transition-duration: 0.5s;
+  &:hover {
+    transition-duration: 0.5s;
+    background: $primary-light-hover;
+  }
+}

@@ -1,0 +1,70 @@
+@import "../variables";
+
+@mixin badge-position {
+  position: absolute;
+  top: -8px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+}
+.upload-doc-btn {
+  width: 120px;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  justify-content: center;
+  align-items: center;
+}
+.upload-item {
+  position: relative;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .ant-upload-picture-card-wrapper {
+    width: unset !important;
+    .ant-upload-select {
+      margin: 0 !important;
+    }
+  }
+  h6 {
+    text-align: center;
+    margin-top: 10px;
+    width: 110px;
+  }
+  .upload-item-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .new-badge {
+    @include badge-position;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: $primary;
+    margin-top: 4px;
+  }
+  .accepted-badge {
+    @include badge-position;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: $success;
+    margin-top: 4px;
+  }
+  .declined-badge {
+    @include badge-position;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: $red-danger;
+    margin-top: 4px;
+  }
+  .btn-file-menu {
+    padding: 5px;
+    margin-top: 4px;
+    color: $gray-700;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

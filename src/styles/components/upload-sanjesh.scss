@@ -1,0 +1,14 @@
+@import "../variables";
+
+.upload-sanjesh-wrapper {
+  width: 60%;
+}
+.content-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.download-demo-text {
+  color: $primary;
+  cursor: pointer;
+}

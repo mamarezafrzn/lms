@@ -1,0 +1,64 @@
+@import "../variables";
+
+@media screen and (max-width: 576px) {
+  .sider-titles-wrapper {
+    display: none !important;
+  }
+  .nav-text {
+    display: none;
+  }
+  .sider-icons {
+    margin-left: unset !important;
+  }
+}
+
+.sider-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+.sider-logo-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 20px 5px;
+}
+.sider-logo {
+  width: 48px;
+}
+.sider-titles-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+.sider-first-title {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.sider-second-title {
+  font-size: 10px;
+}
+.sider-icons {
+  margin-left: 10px;
+}
+.sider-log-out-wrapper {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 25px;
+  transition: ease-in-out 0.2s;
+  &:hover {
+    color: $red-danger;
+  }
+}
+.sider-log-out-icon {
+  font-size: 22px;
+  margin-left: 10px;
+  font-weight: 300;
+}

@@ -1,0 +1,48 @@
+@import "../variables";
+
+@media screen and (max-width: 500px) {
+  .card-title-wrapper {
+    margin-bottom: 15px !important;
+  }
+  .avatar-wrapper {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .card-title-wrapper {
+    text-align: center !important;
+  }
+  .grade-badge-wrapper {
+    justify-content: center !important;
+  }
+}
+.card-row {
+  margin: 15px auto;
+}
+.grade-badge-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+.grade-badge {
+  background-color: #108ee9;
+  color: white;
+  border-radius: 5px;
+  padding: 4px 12px;
+  font-size: 13px;
+}
+.avatar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+.card-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 9px;
+  text-align: right;
+}
+.card-title {
+  margin: 5px 0;
+  color: $gray-800;
+}
+.divider {
+  margin-bottom: 10px !important;
+}

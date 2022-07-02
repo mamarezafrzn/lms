@@ -1,0 +1,95 @@
+@import "../variables";
+
+.student-table-card-header {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.sent-document-table-header {
+  display: flex;
+  flex-direction: column;
+}
+.student-table-search {
+  width: 260px !important;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.student-table {
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+.student-profile-img-wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.student-profile-img {
+  max-width: 35px;
+  max-height: 35px;
+  border-radius: 50%;
+}
+.student-table-notification {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: orangered;
+}
+.student-link {
+  padding-left: 10px;
+}
+.sent-documents-badge {
+  background-color: $primary;
+  border-radius: 50%;
+  padding-top: 2px;
+  color: white;
+  width: 25px;
+  height: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-h6;
+}
+.accepted-documents {
+  color: $success;
+}
+.not-accepted-documents {
+  color: $red-danger;
+}
+.student-table-card-footer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+.student-table-pagination {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: left;
+}
+.student-table-filter-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  .ant-radio-group {
+    margin-bottom: 15px;
+  }
+  .filter-actions-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .remove-filter {
+      color: $red-danger;
+      font-size: $font-size-h6;
+    }
+    .apply-filter {
+      font-size: $font-size-h6;
+    }
+  }
+}

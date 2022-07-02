@@ -1,0 +1,19 @@
+@import "../variables";
+
+@media screen and (max-width: 500px) {
+  .student-dashboard-container {
+    width: $student-dashboard-width-mobile !important;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .student-dashboard-container {
+    width: $student-dashboard-width-laptop !important;
+  }
+}
+
+.student-dashboard-container {
+  width: $student-dashboard-width;
+  margin: 0 auto;
+  margin-top: 30px;
+}

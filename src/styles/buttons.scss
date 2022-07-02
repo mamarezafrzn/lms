@@ -1,0 +1,102 @@
+@import "./variables";
+
+.circle-button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  &:hover {
+    background: $primary-light-hover;
+  }
+}
+
+@mixin button {
+  height: 50px;
+  color: #fff;
+  font-size: $font-size-button;
+  font-family: iranyekan;
+  padding: 15px 32px;
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.button {
+  @include button;
+  background-color: $primary;
+  margin: 0 10px;
+}
+
+.button:hover {
+  background-color: $primary-hover;
+  color: #fff;
+}
+
+.button:focus {
+  box-shadow: none;
+}
+
+.button ion-icon {
+  margin-right: 6px;
+  font-size: 16px;
+}
+
+.secondary-button {
+  @include button;
+  border: 2px solid $primary;
+  color: #fff;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.secondary-button:hover {
+  background-color: $primary;
+  color: #fff;
+}
+
+.mini-button {
+  @include button;
+  font-size: $font-size-mini-button;
+  padding: 8px 22px;
+  background-color: $primary;
+  margin: 0 10px;
+  height: 40px;
+}
+.mini-button:hover {
+  @include button;
+  font-size: $font-size-mini-button;
+  padding: 8px 22px;
+  background-color: $primary-hover;
+  margin: 0 10px;
+  height: 40px;
+}
+
+.mini-secondary-button {
+  @include button;
+  font-size: $font-size-mini-button;
+  padding: 8px 22px;
+  border: 2px solid $primary;
+  margin: 0 10px;
+  height: 40px;
+}
+.mini-secondary-button:hover {
+  @include button;
+  font-size: $font-size-mini-button;
+  padding: 8px 22px;
+  background-color: $primary-hover;
+  border-color: $primary-hover;
+  margin: 0 10px;
+  height: 40px;
+}
+
+.button ion-icon,
+.mini-button ion-icon {
+  margin-left: 10px;
+  width: 18px;
+  height: 18px;
+}

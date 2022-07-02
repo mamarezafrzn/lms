@@ -1,0 +1,139 @@
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: iranyekan;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: #555;
+  :visited {
+    color: #555;
+  }
+}
+
+//dropdown
+
+.ant-select-arrow {
+  right: unset !important;
+  left: 11px;
+}
+
+.ant-select-selection--single {
+  position: relative;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+.ant-select-selection--single .ant-select-selection__rendered {
+  margin-left: 24px !important;
+  margin-right: 11px !important;
+}
+.ant-select-selection__placeholder {
+  text-align: right !important;
+  font-family: "iranyekan";
+}
+.ant-select-selection-selected-value {
+  width: 100%;
+}
+
+//Upload
+.ant-upload-list-item-name {
+  margin-top: 3px;
+}
+.ant-upload.ant-upload-drag .ant-upload {
+  padding: 36px 0 !important;
+}
+
+//Search
+.ant-input-affix-wrapper .ant-input-suffix {
+  left: 12px;
+  right: unset !important;
+}
+.ant-input-affix-wrapper .ant-input:not(:last-child) {
+  padding-right: 11px !important;
+}
+.ant-input-search {
+  direction: rtl !important;
+}
+
+//Table
+.ant-table-thead > tr > th,
+.ant-table-tbody > tr > td {
+  padding: 16px 10px !important;
+  font-size: 13px;
+  text-align: right !important;
+}
+
+//Tabale Pagination
+.ant-table-pagination.ant-pagination {
+  float: unset !important;
+  display: flex;
+  direction: initial !important;
+  margin-top: 20px !important;
+}
+
+//Sider
+.sider-wrapper {
+  box-shadow: -5px 0px 10px -4px rgba(0, 0, 0, 0.4);
+}
+
+//Dropdown
+.ant-dropdown-menu {
+  text-align: right !important;
+  font-weight: 600 !important;
+  font-family: iranyekan !important;
+}
+
+//Message
+.ant-message {
+  direction: ltr;
+}
+
+//Radio
+.ant-radio-group {
+  direction: ltr;
+}
+
+input {
+  font-family: iranyekan !important;
+  font-weight: 500;
+}
+
+//Textarea
+.ant-input-affix-wrapper.ant-input-affix-wrapper-textarea-with-clear-btn
+  .ant-input {
+  padding-right: 22px !important;
+}

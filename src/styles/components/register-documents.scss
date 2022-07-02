@@ -1,0 +1,139 @@
+@import "../variables";
+
+.user-card {
+  h5 {
+    text-align: right;
+  }
+}
+.document-type-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  .document-type-title {
+    margin-bottom: 0;
+    margin-left: 10px;
+  }
+}
+.ic-upload {
+  font-size: 50px;
+  color: $primary;
+  margin-bottom: 10px;
+}
+.upload-text {
+  color: $gray-800;
+  font-size: $font-size-h6;
+  font-weight: 400;
+}
+.upload-desc {
+  color: $gray-600;
+  font-size: $font-size-h6;
+  font-weight: 400;
+}
+.upload-wrapper {
+  margin-top: 20px;
+  direction: ltr;
+  p {
+    direction: rtl;
+  }
+}
+.input-doc-name {
+  margin-top: 20px;
+  width: 300px;
+}
+.submit-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 80px;
+  .track-code-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    .track-code {
+      margin-right: 10px;
+      color: #fff;
+      background: $secondary;
+      padding: 5px 8px 3px 8px;
+      border-radius: 4px;
+      font-weight: 400;
+    }
+  }
+  h6 {
+    margin-bottom: 0 !important;
+  }
+}
+.sent-docs-wrapper {
+  margin-top: 30px;
+  .divider {
+    margin: 0 !important;
+    &:last-child {
+      display: none;
+    }
+  }
+  .sent-doc-item {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    .doc-item-right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      i {
+        font-size: 14px;
+        margin-top: 2px;
+        margin-left: 10px;
+        color: $gray-500;
+        transition-duration: 0.3s;
+        &:hover {
+          cursor: pointer;
+          color: $warning;
+          transition-duration: 0.3s;
+        }
+      }
+    }
+    .doc-item-left {
+      display: flex;
+      flex-direction: row;
+      i {
+        font-size: 16px;
+        margin-top: 2px;
+        margin-right: 10px;
+        color: $gray-500;
+        transition-duration: 0.3s;
+      }
+      a {
+        &:hover {
+          i {
+            color: $primary;
+            cursor: pointer;
+            transition-duration: 0.3s;
+          }
+        }
+      }
+      h5 {
+        font-size: $font-size-h6;
+      }
+    }
+    h5 {
+      font-size: $font-size-small-title;
+      margin-bottom: 0;
+    }
+    .waiting {
+      color: $gray-700;
+    }
+    .verified {
+      color: $success;
+    }
+    .unverified {
+      color: $red-danger;
+    }
+  }
+}
