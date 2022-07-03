@@ -53,21 +53,12 @@ const Courses = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [loading, setLoading] = useState(false);
   const [myData,setMyData] = useState(data)
-  const filteredData = []
   const start = () => {
     setLoading(true); // ajax request after empty completing
 
-    // setMyData()
-// const y =[]
-    // for(const selected in selectedRowKeys){
-        
-    //  myData.filter((item)=>{
-    //     return !selected.includes(({key})=>item.key === key) && y.push(item)
-    //    })
-    //    console.log(y)
-    //    setMyData()
-    // }
-
+  
+     const d = myData.filter((item)=> !selectedRowKeys.includes(item.key))
+    setMyData(d)
 
     setTimeout(() => {
       setSelectedRowKeys([]);
@@ -76,7 +67,6 @@ const Courses = () => {
   };
 
   const onSelectChange = (newSelectedRowKeys) => {
-    // console.log("selectedRowKeys deleted: ", selectedRowKeys);
     setSelectedRowKeys(newSelectedRowKeys);
   };
 
@@ -99,7 +89,7 @@ const Courses = () => {
             onClick={start}
             disabled={!hasSelected}
             loading={loading}>
-            Reload
+            حذف
           </Button>
           <span
             style={{
