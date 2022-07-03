@@ -31,7 +31,7 @@ class StudentDashboard extends Component {
               firstLink
             />
             <LinkCard
-              to="/messages"
+              to="/courses"
               title="دروس"
               text="مشاهده دروس انتخاب شده"
               icon={books}

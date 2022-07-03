@@ -48,7 +48,7 @@ class NavBar extends Component {
   render() {
     const logOutIcon = (
       <>
-        <Link to="/">
+        <Link to="/profile">
        <i className="far fa-sm fa-user edit-profile circle-button"></i>
      </Link>
       <Link to="/">
@@ -77,8 +77,8 @@ class NavBar extends Component {
             <div className="navbar-user-profle-img">
               <Dropdown
                 overlay={logOutIcon}
-                // placement="bottomCenter"
-                // disabled={!!withoutUser}
+                placement="bottomCenter"
+                disabled={!!withoutUser}
                 >
                 <Avatar className="avatar" icon="user" size={38} />
 

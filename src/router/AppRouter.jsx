@@ -6,7 +6,7 @@ import AdminRouter from "./AdminRouter";
 import StudentRouter from "./StudentRouter";
 import LoginPage from "../components/LoginPage";
 import StudentDashboard from "../components/StudentDashboard";
-import Messages from "../components/Messages";
+// import Messages from "../components/Messages";
 import RegisterDocuments from "../components/RegisterDocuments";
 import NavBar from "../components/NavBar";
 import StudentList from "../components/StudentList";
@@ -14,6 +14,8 @@ import StudentPage from "../components/StudentPage";
 import UploadSanjesh from "../components/UploadSanjesh";
 import AdminsTable from "../components/AdminsTable";
 import SupportPage from "../components/SupportPage";
+import Profile from "../components/Profile"
+import Courses from "../components/Courses";
 const history = createBrowserHistory();
 
 
@@ -43,7 +45,8 @@ const AppRouter = () => {
           component={StudentDashboard}
           exact={true}
         />
-        <StudentRouter path="/messages" component={Messages} exact={true} />
+        <StudentRouter path="/profile" component={Profile} exact={true} />
+        <StudentRouter path="/courses" component={Courses} exact={true} />
         <StudentRouter
           path="/register-documents"
           component={RegisterDocuments}
