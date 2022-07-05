@@ -40,7 +40,17 @@ const columns = [
 
 const staticCourses = [
   {
-    key:1,
+    key: 1,
+    name: "درس",
+    code: 101,
+    type: "عمومی",
+    unit: 1,
+    speculative: 0,
+    practicable: 0,
+    required: "ندارد",
+  },
+  {
+    key: 2,
     name: "2 زبان",
     code: 100,
     type: "تخصصی",
@@ -50,7 +60,7 @@ const staticCourses = [
     required: "زبان 1",
   },
   {
-    key:2,
+    key: 3,
     name: "برنامه نویسی 1",
     code: 110,
     type: "تخصصی",
@@ -60,7 +70,7 @@ const staticCourses = [
     required: "ندارد",
   },
   {
-    key:3,
+    key: 4,
     name: "برنامه نویسی 2",
     code: 120,
     type: "تخصصی",
@@ -70,7 +80,7 @@ const staticCourses = [
     required: "برنامه نویسی 1",
   },
   {
-    key:4,
+    key: 5,
     name: "ریاضی 1",
     code: 130,
     type: "عمومی",
@@ -102,9 +112,9 @@ const Courses = () => {
   const [loading, setLoading] = useState(false);
   const [myData, setMyData] = useState(data);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  // const [form] = Form.useForm();
-  // const course = Form.useWatch('course', form);
-  // const courseCode = Form.useWatch('courseCode', form);
+  const [coursefilter, setCourseFilter] = useState("");
+  const [codeFilter, setCodeFilter] = useState("");
+  const [filteredData, setFilteredData] = useState(staticCourses);
 
   const start = () => {
     setLoading(true); // ajax request after empty completing
@@ -141,25 +151,47 @@ const Courses = () => {
 
   const handleOk = () => {
     setIsModalVisible(false);
-    const newData = staticCourses.filter((item)=>modalSelectedRowKeys.includes(item.key))
-    
-    setMyData([...myData,...newData])
-    
+    const newData = staticCourses.filter((item) =>
+      modalSelectedRowKeys.includes(item.key)
+    );
+
+    setMyData([...myData, ...newData]);
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
+  const handleFilter = (event) => {
+    event.preventDefault();
+
+    if (coursefilter && codeFilter) {
+      setFilteredData(staticCourses.filter(
+        (item) => coursefilter == item.name && codeFilter == item.code
+      ))
+    }else if(coursefilter && !codeFilter){
+      setFilteredData(staticCourses.filter(
+        (item) => coursefilter == item.name
+      ))
+    }else if(!coursefilter && codeFilter){
+      setFilteredData(staticCourses.filter(
+        (item) => codeFilter == item.code
+      ))
+    }else{
+      setFilteredData(staticCourses)
+    }
+    
+  };
+
   const searhForm = (
     <Form
-    //  form={form}
+      onSubmit={handleFilter}
       name="basic"
       labelCol={{
-        span: 8,
+        span: 10,
       }}
       wrapperCol={{
-        span: 16,
+        span: 20,
       }}
       initialValues={{
         remember: true,
@@ -167,13 +199,19 @@ const Courses = () => {
       layout="inline"
       autoComplete="off">
       {" "}
-      <Form.Item
-        name="course">
-        <Input placeholder="نام درس" />
+      <Form.Item name="course">
+        <Input
+          placeholder="نام درس"
+          value={coursefilter}
+          onChange={(event) => setCourseFilter(event.target.value)}
+        />
       </Form.Item>
-      <Form.Item
-        name="courseCode">
-        <Input placeholder="کد درس" />
+      <Form.Item name="courseCode">
+        <Input
+          placeholder="کد درس"
+          value={codeFilter}
+          onChange={(event) => setCodeFilter(event.target.value)}
+        />
       </Form.Item>
       <Form.Item>
         <Button
@@ -193,7 +231,6 @@ const Courses = () => {
       </Form.Item>
     </Form>
   );
-
 
   return (
     <div>
@@ -239,16 +276,16 @@ const Courses = () => {
               }}
               rowSelection={modalRowSelection}
               columns={columns}
-              dataSource={staticCourses}
+              dataSource={filteredData}
               size="small"
               pagination={{ defaultPageSize: 3, className: "pagination" }}
             />
           </Modal>
           <span
             style={{
-              marginLeft: 8,
+              marginRight: 8,
             }}>
-            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
+            {hasSelected ? `${selectedRowKeys.length} مورد انتخاب شده` : ""}
           </span>
         </div>
         <Table
