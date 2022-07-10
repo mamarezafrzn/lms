@@ -16,6 +16,7 @@ import AdminsTable from "../components/AdminsTable";
 import SupportPage from "../components/SupportPage";
 import Profile from "../components/Profile"
 import Courses from "../components/Courses";
+import AdminCourses from "../components/AdminCourses";
 const history = createBrowserHistory();
 
 
@@ -61,6 +62,7 @@ const AppRouter = () => {
         />
         <AdminRouter path="/admin/admins-table" component={AdminsTable} exact />
         <AdminRouter path="/admin/support" component={SupportPage} exact />
+        <AdminRouter path="/admin/admin-courses" component={AdminCourses} exact />
       </Switch>
     </Router>
   );

@@ -40,6 +40,12 @@ const AdminSider = () => {
               <span className="nav-text">پشتیبانی دانشجو</span>
             </Link>
           </Menu.Item>
+          <Menu.Item key="5">
+            <Link to="/admin/admin-courses">
+              <i className="fas fa-user-headset sider-icons"></i>
+              <span className="nav-text">لیست دروس</span>
+            </Link>
+          </Menu.Item>
         </Menu>
       </div>
       <Link to="/">
