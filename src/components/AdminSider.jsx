@@ -42,7 +42,7 @@ const AdminSider = () => {
           </Menu.Item>
           <Menu.Item key="5">
             <Link to="/admin/admin-courses">
-              <i className="fas fa-user-headset sider-icons"></i>
+              <i className="fas fa-book-open sider-icons"></i>
               <span className="nav-text">لیست دروس</span>
             </Link>
           </Menu.Item>

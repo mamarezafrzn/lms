@@ -1,6 +1,16 @@
 import React from "react";
 import BackBtn from "./BackBtn";
-import { Avatar, Typography, Row, Col, Divider } from "antd";
+import {
+  Avatar,
+  Typography,
+  Row,
+  Col,
+  Divider,
+  Button,
+  Form,
+  Input,
+  Modal,
+} from "antd";
 import CardContainer from "./common/CardContainer";
 import "../styles/components/user-card.scss";
 import { useState } from "react";
@@ -20,6 +30,8 @@ const Profile = () => {
     fatherName: "رضا",
     password: "123456",
   });
+  const [emailEdit, setEmailEdit] = useState(false);
+  const [passwordEdit, setPasswordEdit] = useState(false);
 
   const {
     profileImage,
@@ -36,6 +48,63 @@ const Profile = () => {
     password,
   } = user;
   const { Text } = Typography;
+  const [newEmail, setNewEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const handleEmailOnChange = (event) => {
+    setNewEmail(event.target.value);
+  };
+  const handleEmailEdit = () => {
+    if (newEmail.length > 0) {
+      setUser({ ...user, email: newEmail });
+      setEmailEdit(false)
+    }
+  };
+
+  const handlePasswordOnChange = (event) => {
+    setNewPassword(event.target.value);
+  };
+  const handleConfirmOnChange = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+  const handlePasswordEdit = () => {
+
+    if (newEmail.length > 0 && newPassword == confirmPassword) {
+      setUser({ ...user, password: newPassword });
+      setPasswordEdit(false)
+    }
+  };
+
+  const emailForm = (
+    <Form
+      style={{ direction: "rtl", float: "right" }}
+      name="basic"
+      layout="vertical"
+      labelCol={{
+        span: 8,
+      }}
+      wrapperCol={{
+        span: 16,
+      }}
+      initialValues={{
+        remember: true,
+      }}
+      autoComplete="off">
+      <Form.Item
+        label="ایمیل جدید"
+        name="email"
+        rules={[
+          {
+            required: true,
+            message: "ایمیل جدید را وارد کنید!",
+          },
+        ]}>
+        <Input />
+      </Form.Item>
+    </Form>
+  );
+
   return (
     <div>
       <BackBtn to="/student" />
@@ -97,21 +166,82 @@ const Profile = () => {
               <Text type="secondary">{fatherName}</Text>
             </div>
           </Col>
-
         </Row>
         <Row type="flex" align="middle">
-        <Col sm={12} xs={24}>
-            <div className="card-title-wrapper">
-            <i class="icon-edit" style={{fontSize:"36px",color:"black"}}></i>
-              <span className="card-title">ایمیل</span>
+          <Col sm={12} xs={24}>
+            <div
+              className="card-title-wrapper"
+              onClick={() => setEmailEdit(true)}
+              style={{ cursor: "pointer" }}>
+              <span className="card-title">
+                ایمیل <i class="far fa-edit"></i>
+              </span>
               <Text type="secondary">{email}</Text>
             </div>
+            {emailEdit && (
+              <Modal
+                visible={emailEdit}
+                okText="ذخیره"
+                cancelText="خروج"
+                onCancel={() => setEmailEdit(false)}
+                onOk={handleEmailEdit}>
+                <div className="flex-column" style={{ padding: 20 }}>
+                  <div className="flex-row">
+                    <div className="flex-column">
+                      <label htmlFor="email">ایمیل جدید :</label>
+                      <Input
+                        name="email"
+                        id="email"
+                        type="email"
+                        onChange={handleEmailOnChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            )}
           </Col>
           <Col sm={12} xs={24}>
-            <div className="card-title-wrapper">
-              <span className="card-title">رمز عبور</span>
-              <Text type="secondary">***********</Text>
+            <div
+              className="card-title-wrapper"
+              onClick={() => setPasswordEdit(true)}
+              style={{ cursor: "pointer" }}>
+              <span className="card-title">
+                رمز عبور <i class="far fa-edit"></i>
+              </span>
+              <Text type="secondary">*********</Text>
             </div>
+            {passwordEdit && (
+              <Modal
+                visible={passwordEdit}
+                okText="ذخیره"
+                cancelText="خروج"
+                onCancel={() => setPasswordEdit(false)}
+                onOk={handlePasswordEdit}>
+                <div className="flex-column" style={{ padding: 20 }}>
+                  <div className="flex-row">
+                    <div className="flex-column">
+                      <label htmlFor="password">پسورد جدید :</label>
+                      <Input
+                        name="password"
+                        id="password"
+                        type="password"
+                        onChange={handlePasswordOnChange}
+                      />
+                    </div>
+                    <div className="flex-column">
+                      <label htmlFor="confirm"> تکرار پسورد :</label>
+                      <Input
+                        name="confirm"
+                        id="confirm"
+                        type="password"
+                        onChange={handleConfirmOnChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            )}
           </Col>
         </Row>
       </CardContainer>
