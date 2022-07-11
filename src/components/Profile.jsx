@@ -56,9 +56,16 @@ const Profile = () => {
     setNewEmail(event.target.value);
   };
   const handleEmailEdit = () => {
+    const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+    const result = pattern.test(newEmail)
     if (newEmail.length > 0) {
-      setUser({ ...user, email: newEmail });
-      setEmailEdit(false)
+      if(result){
+        setUser({ ...user, email: newEmail });
+        setEmailEdit(false);
+        setNewEmail("");
+      }
+      
+
     }
   };
 
@@ -69,41 +76,14 @@ const Profile = () => {
     setConfirmPassword(event.target.value);
   };
   const handlePasswordEdit = () => {
-
     if (newEmail.length > 0 && newPassword == confirmPassword) {
       setUser({ ...user, password: newPassword });
-      setPasswordEdit(false)
+      setPasswordEdit(false);
+      setNewPassword("");
+      setConfirmPassword("");
     }
   };
 
-  const emailForm = (
-    <Form
-      style={{ direction: "rtl", float: "right" }}
-      name="basic"
-      layout="vertical"
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      initialValues={{
-        remember: true,
-      }}
-      autoComplete="off">
-      <Form.Item
-        label="ایمیل جدید"
-        name="email"
-        rules={[
-          {
-            required: true,
-            message: "ایمیل جدید را وارد کنید!",
-          },
-        ]}>
-        <Input />
-      </Form.Item>
-    </Form>
-  );
 
   return (
     <div>
@@ -188,13 +168,30 @@ const Profile = () => {
                 <div className="flex-column" style={{ padding: 20 }}>
                   <div className="flex-row">
                     <div className="flex-column">
-                      <label htmlFor="email">ایمیل جدید :</label>
-                      <Input
-                        name="email"
-                        id="email"
-                        type="email"
-                        onChange={handleEmailOnChange}
-                      />
+                      {/* <label htmlFor="email">ایمیل جدید :</label> */}
+                      <Form>
+                        <Form.Item
+                          name="email"
+                          label="ایمیل جدید"
+                          rules={[
+   
+                            {
+                              required: true,
+                              message: "Please input your E-mail!",
+                            },
+                          ]}
+                          wrapperCol={{
+                            offset: 0,
+                            span: 24,
+                          }}>
+                          <Input
+                            name="email"
+                            id="email"
+                            type="email"
+                            onChange={handleEmailOnChange}
+                          />
+                        </Form.Item>
+                      </Form>
                     </div>
                   </div>
                 </div>

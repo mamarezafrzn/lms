@@ -7,6 +7,7 @@ import {
   Dropdown,
   Button,
   Radio,
+  Col,
 } from "antd";
 import { Link } from "react-router-dom";
 import CardContainer from "./common/CardContainer";
@@ -163,7 +164,7 @@ class StudentTable extends Component {
     } = this.state;
     const filterContent = (
       <div
-        className="student-table-filter-wrapper"
+      className="student-table-filter-wrapper"
         onClick={() => this.setState({ filterVisable: true })}>
         <Search
           className="student-table-search"

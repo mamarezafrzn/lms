@@ -17,6 +17,7 @@ import SupportPage from "../components/SupportPage";
 import Profile from "../components/Profile"
 import Courses from "../components/Courses";
 import AdminCourses from "../components/AdminCourses";
+import Scores from "../components/Scores";
 const history = createBrowserHistory();
 
 
@@ -37,6 +38,7 @@ const renderLoginPage = () => {
 };
 
 const AppRouter = () => {
+
   return (
     <Router history={history}>
       <Switch>
@@ -63,6 +65,11 @@ const AppRouter = () => {
         <AdminRouter path="/admin/admins-table" component={AdminsTable} exact />
         <AdminRouter path="/admin/support" component={SupportPage} exact />
         <AdminRouter path="/admin/admin-courses" component={AdminCourses} exact />
+
+  <AdminRouter path="/admin/admin-courses">
+  <Route path="/admin/admin-courses/scores/:course/:id" component={Scores} exact/>
+  </AdminRouter>
+
       </Switch>
     </Router>
   );

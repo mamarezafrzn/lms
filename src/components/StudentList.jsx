@@ -8,11 +8,11 @@ class StudentList extends Component {
   render() {
     return (
       <Row gutter={16}>
-        <Col span={10}>
-          <SentDocuments />
-        </Col>
-        <Col span={14}>
+        <Col span={24}>
           <StudentTable />
+        </Col>
+        <Col span={24}>
+          <SentDocuments />
         </Col>
       </Row>
     );

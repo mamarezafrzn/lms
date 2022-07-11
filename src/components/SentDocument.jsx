@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Table, Pagination } from "antd";
+import { Input, Table, Pagination, Col } from "antd";
 import { Link } from "react-router-dom";
 import CardContainer from "./common/CardContainer";
 import "../styles/components/student-table.scss";
@@ -112,6 +112,7 @@ class SentDocuments extends Component {
       );
     }
     return (
+
       <CardContainer style={{ padding: "5px 10px" }}>
         <div className="student-table-card-wrapper">
           <div className="sent-document-table-header">
@@ -143,6 +144,7 @@ class SentDocuments extends Component {
           />
         </div>
       </CardContainer>
+
     );
   }
 }

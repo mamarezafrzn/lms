@@ -1,97 +1,54 @@
 import React, { Component } from "react";
-import { Space, Table, Dropdown, Menu, message, Button, Modal, Input } from "antd";
+import { withRouter } from "react-router";
+import {
+  Space,
+  Table,
+  Dropdown,
+  Menu,
+  message,
+  Button,
+  Modal,
+  Input,
+} from "antd";
 import CardContainer from "./common/CardContainer";
 import "../styles/components/admins-table.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { toHaveFormValues } from "@testing-library/jest-dom/dist/to-have-form-values";
+import { ConsoleSqlOutlined } from "@ant-design/icons";
 
-class AdminCourses extends Component {
+class Scores extends Component {
 
   state = {
     columns: [
-      {
-        title: "حذف",
-        dataIndex: "deleteItem",
-        key: "deleteItem",
-        render: (deleteItem, item) => (
-          <React.Fragment>
-            {item.accessTitle !== "مدیریت سامانه" && (
-              <Dropdown
-                overlay={() => this.dropdownMenu(item)}
-                trigger={["click"]}
-                placement="bottomRight">
-                <a className="ant-dropdown-link" href="#">
-                  <i
-                    className="far fa-chevron-down"
-                    style={{ marginLeft: "10px" }}></i>
-                </a>
-              </Dropdown>
-            )}
-            <span>{deleteItem}</span>
-          </React.Fragment>
-        ),
-      },
-      { title: "نام درس", dataIndex: "name", key: "name" },
-      { title: "کد درس", dataIndex: "code", key: "code" },
-      { title: "نوع درس", dataIndex: "type", key: "type" },
-      { title: "تعداد واحد", dataIndex: "unit", key: "unit" },
-      { title: "واحد تئوری", dataIndex: "speculative", key: "speculative" },
-      { title: "واحد عملی", dataIndex: "practicable", key: "practicable" },
-      { title: "پیش نیازها", dataIndex: "required", key: "required" },
-      {
-        title: 'نمرات',
-        key: 'action',
-        render: (_, record) => {
-          return (
-            <Link to={`/admin/admin-courses/scores/${record.name}/${record.code}`}>لیست دانشجویان</Link>
-        )
-        },
-      },
+      { title: "نام دانشجو", dataIndex: "name", key: "name" },
+      { title: "شماره دانشجویی", dataIndex: "studentCode", key: "studentCode" },
+      { title: "نمره", key: "score", dataIndex: "score" },
     ],
     courses: [
       {
-        name: "ریاضی",
-        code: "220",
-        type: "عمومی",
-        unit: "2",
-        speculative: "2",
-        practicable: "0",
-        required: "ندارد",
+        name: "محمد نظری",
+        studentCode: "99121033111008",
+        score: "20",
       },
       {
-        name: "ریاضی 2",
-        code: "221",
-        type: "عمومی",
-        unit: "2",
-        speculative: "2",
-        practicable: "0",
-        required: "ریاضی 1",
+        name: "علی بکماز",
+        studentCode: "99121033111008",
+        score: "12",
       },
       {
-        name: "برنامه نویسی 1",
-        code: "222",
-        type: "تخصصی",
-        unit: "3",
-        speculative: "1",
-        practicable: "2",
-        required: "ندارد",
+        name: "محمدرضا فیروزآبادی",
+        studentCode: "99121033111221",
+        score: "ندارد",
       },
       {
-        name: "برنامه نویسی 2",
-        code: "223",
-        type: "تخصصی",
-        unit: "3",
-        speculative: "1",
-        practicable: "2",
-        required: "برنامه نویسی 1",
+        name: "مهدی رنجبر",
+        studentCode: "99121033345678",
+        score: "18",
       },
       {
-        name: "مباحث ویژه",
-        code: "224",
-        type: "تخصصی",
-        unit: "3",
-        speculative: "1",
-        practicable: "2",
-        required: "ندارد",
+        name: "بنده خدا",
+        studentCode: "99121033989237",
+        score: "ندارد",
       },
     ],
     addcourse: {
@@ -104,6 +61,7 @@ class AdminCourses extends Component {
       required: "",
     },
     addAdminModal: false,
+    edit: false,
   };
 
   deleteUser = (user) => {
@@ -127,7 +85,7 @@ class AdminCourses extends Component {
   };
 
   handleAddAdmin = () => {
-   //add
+    //add
   };
 
   dropdownMenu = (user) => {
@@ -141,15 +99,16 @@ class AdminCourses extends Component {
   };
 
   render() {
+    const { location, history } = this.props;
+    const course = location.pathname.split("/")[4]
+    const id = location.pathname.split("/")[5]
+
     const { columns, courses, addAdminModal } = this.state;
-  
     return (
       <CardContainer>
         <div className="admins-table-header">
-          <h4>لیست دروس</h4>
-          <Button onClick={this.showAddAdminModal} type="primary">
-            افزودن درس
-          </Button>
+          <h4>لیست  {course}</h4>
+
           <Modal
             visible={addAdminModal}
             okText="ذخیره"
@@ -239,4 +198,4 @@ class AdminCourses extends Component {
   }
 }
 
-export default AdminCourses;
+export default Scores;
