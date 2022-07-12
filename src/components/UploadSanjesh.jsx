@@ -17,7 +17,7 @@ class UploadSanjesh extends Component {
     const { Dragger } = Upload;
     const { Option } = Select;
     return (
-      <div className="upload-sanjesh-wrapper">
+      <div className="upload-sanjesh-wrapper" style={{width:"100%"}}>
         <CardContainer>
           <div
             className="content-space-between"

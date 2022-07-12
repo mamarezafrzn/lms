@@ -14,9 +14,9 @@ class SupportPage extends React.Component {
   render() {
     const { Search } = Input;
     return (
-      <div className="">
+      <div className="" >
         <Row type="flex" gutter={32}>
-          <Col span={14}>
+          <Col span={24}>
             <InboxMessages
               onSendButtonClick={() => this.setState({ sendButtonModal: true })}
             />

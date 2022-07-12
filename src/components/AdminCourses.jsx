@@ -42,7 +42,7 @@ class AdminCourses extends Component {
         key: 'action',
         render: (_, record) => {
           return (
-            <Link to={`/admin/admin-courses/scores/${record.name}/${record.code}`}>لیست دانشجویان</Link>
+            <Link to={`/admin/admin-courses/scores/${record.name}/${record.code}`} style={{color:"darkslateblue"}}>لیست دانشجویان</Link>
         )
         },
       },

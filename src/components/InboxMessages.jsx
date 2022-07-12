@@ -76,7 +76,7 @@ class InboxMessages extends Component {
   render() {
     const { messages, currentPage, pageSize } = this.state;
     return (
-      <CardContainer title="صندوق پیام">
+      <CardContainer title="صندوق پیام" style={{height:"100%"}}>
         <Button
           type="primary"
           className="flex send-message-btn"
