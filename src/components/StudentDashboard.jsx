@@ -6,12 +6,15 @@ import LinkCard from "./LinkCard";
 import "../styles/components/student-dashboard.scss";
 import { fontSizes } from "../consts/styles/fonts";
 import { colors } from "../consts/styles/colors";
-import document from "../assets/images/ic-document.svg";
 import books from "../assets/images/ic-book.svg";
+import editProfileIcon from "../assets/images/user-pen-solid.svg"
+
+
 
 class StudentDashboard extends Component {
   state = {};
   render() {
+
     return (
       <div>
         <ShamsipourLogo
@@ -22,14 +25,16 @@ class StudentDashboard extends Component {
         <Row gutter={32} style={{ marginTop: "40px" }}>
           <Col md={12} xs={24}>
             <LinkCard
-              to="/register-documents"
-              title="ارسال مدارک"
-              text="ارسال و مشاهده وضعیت مدارک"
-              icon={document}
+              to="/profile"
+              title="تغییر اطلاعات کاربری"
+              text="بارگذاری عکس پروفایل و تفییر اطلاعات کاربری"
+              icon={editProfileIcon }
               color={colors.lightBlue}
               bgColor={colors.darkBlue}
+     
               firstLink
             />
+   
             <LinkCard
               to="/courses"
               title="دروس"

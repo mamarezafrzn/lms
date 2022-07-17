@@ -38,11 +38,20 @@ class AdminCourses extends Component {
       { title: "واحد عملی", dataIndex: "practicable", key: "practicable" },
       { title: "پیش نیازها", dataIndex: "required", key: "required" },
       {
+        title: 'سرفصل ها',
+        key: 'action',
+        render: (_, record) => {
+          return (
+            <Link to={`/admin/admin-courses/admin-topic/${record.name}/${record.code}`} style={{color:"darkslateblue",cursor:"pointer"}}>مشاهده </Link>
+        )
+        },
+      },
+      {
         title: 'نمرات',
         key: 'action',
         render: (_, record) => {
           return (
-            <Link to={`/admin/admin-courses/scores/${record.name}/${record.code}`} style={{color:"darkslateblue"}}>لیست دانشجویان</Link>
+            <Link to={`/admin/admin-courses/scores/${record.name}/${record.code}`} style={{color:"darkslateblue",cursor:"pointer"}}>لیست دانشجویان</Link>
         )
         },
       },

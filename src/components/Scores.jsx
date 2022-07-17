@@ -209,7 +209,6 @@ const resetEditing = () =>{
   setEditingStudent(false)
 }
 const onScoreChange = () =>{
-
   if(editingStudent.score <= 20 && editingStudent.score >= -1){
     setStudent((pre)=>{
       return pre.map((item)=>{
@@ -223,7 +222,7 @@ const onScoreChange = () =>{
     resetEditing()
   }
 }
-console.log(editingStudent)
+
   const { course, id } = useParams();
 
   return (

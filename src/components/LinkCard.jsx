@@ -12,6 +12,7 @@ const LinkCard = ({ title, text, icon, color, bgColor, ltr, badge, to }) => {
     marginRight = "15px";
     marginLeft = "0";
   }
+  
   return (
     <div className="link-card-container" style={{ backgroundColor: bgColor }}>
       <Link to={to}>

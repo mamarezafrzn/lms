@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import BackBtn from "./BackBtn";
 
 import "../../src/styles/components/courses.css";
+import { Link } from "react-router-dom";
 
 const columns = [
   {
@@ -35,6 +36,14 @@ const columns = [
   {
     title: "پیش نیازها",
     dataIndex: "required",
+    title: 'سرفصبل ها',
+  },{
+    key: 'action',
+    render: (_, record) => {
+      return (
+      <Link to={`/courses/topics/${record.name}/${record.code}`} style={{color:"darkslateblue",cursor:"pointer"}}> سرفصل</Link>
+    )
+    },
   },
 ];
 
