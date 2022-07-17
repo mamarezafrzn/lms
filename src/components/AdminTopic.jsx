@@ -1,4 +1,4 @@
-import { Button, Card, Col, Form, Input, Row } from "antd";
+import { Button, Card, Col, Form, Input, Modal, Row } from "antd";
 import { keys } from "ramda";
 import React from "react";
 import { useState } from "react";
@@ -40,8 +40,9 @@ const AdminTopic = () => {
       { topic: "سرفصل 6", description: "توضیحات 6", edit: false },
     ],
   });
-  const [topic,setTopic] = useState()
-  const [description,setDescription] = useState()
+  const [topic, setTopic] = useState();
+  const [description, setDescription] = useState();
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const newTopic = { ...topics };
   const showEditHandler = (id, index) => {
@@ -49,23 +50,90 @@ const AdminTopic = () => {
     setTopics((prev) => ({ ...prev, newTopic }));
   };
 
-
   const { course, id } = useParams();
 
+  const deleteHandler = (id, index) => {
+    newTopic[id].splice(index, 1);
+    setTopics((prev) => ({ ...prev, newTopic }));
+  };
 
-  const onFinish = (id,index) => {
+  const onFinishHandler = (id, index) => {
     newTopic[id][index].topic = topic;
     newTopic[id][index].description = description;
     newTopic[id][index].edit = !newTopic[id][index].edit;
     setTopics((prev) => ({ ...prev, newTopic }));
+    setTopic("")
+    setDescription("")
   };
 
- 
+  const newTopicHandler = () => {
+    const addTopic = {topic , description ,edit:false}
+    newTopic[id].push(addTopic)
+    setTopics((prev) => ({ ...prev, newTopic }));
+    setIsModalVisible(false)
+  };
+
+
+  const NewTopicModal = (
+    <Modal
+      title="افزودن سرفصل"
+      okText="ثبت"
+      cancelText="خروج"
+      visible={isModalVisible}
+      onOk={newTopicHandler}
+      onCancel={() => setIsModalVisible(false)}>
+<div className="flex-column" style={{ padding: 20 }}>
+
+                  <div className="flex-row">
+                    <div className="flex-column">
+                      <Form>
+                      <Form.Item
+                      name="topic"
+                      wrapperCol={{
+                        offset: 0,
+                        span: 16,
+                      }}
+                      rules={[
+                        {
+                          required: true,
+                          message: "سرفصل را وارد کنید!",
+                        },
+                      ]}>
+                      <label htmlFor="username">سرفصل</label>
+                      <Input onChange={(e) => setTopic(e.target.value)} />
+                    </Form.Item>{" "}
+                    <Form.Item
+                      name="description"
+                      wrapperCol={{
+                        offset: 0,
+                        span: 16,
+                      }}
+                      rules={[
+                        {
+                          required: true,
+                          message: "توضیحات را وارد کنید!",
+                        },
+                      ]}>
+                      <label htmlFor="username">توضیحات</label>
+                      <Input.TextArea
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                    </Form.Item>
+
+                      </Form>
+                    </div>
+                  </div>
+                </div>
+    </Modal>
+  );
+
   return (
     <div className="site-card-wrapper">
       <BackBtn to="/admin/admin-courses" />
       <Row gutter={24}>
         <h2>{course}</h2>
+        <Button style={{float:"left"}} onClick={()=>setIsModalVisible(!isModalVisible)}>افزودن</Button>
+        {NewTopicModal}
         {topics[id] ? (
           topics[id].map((item, index) => (
             <Col span={24} key={index} style={{ marginTop: "10px" }}>
@@ -76,7 +144,7 @@ const AdminTopic = () => {
                 {item.description}
                 <Button
                   style={{ float: "left", cursor: "pointer", border: "none" }}
-                  onClick={() => showEditHandler(id, index)}>
+                  onClick={() => deleteHandler(id, index)}>
                   <i style={{ color: "red" }} class="far fa-trash"></i>
                 </Button>
                 <Button
@@ -85,33 +153,44 @@ const AdminTopic = () => {
                   <i class="far fa-edit"></i>
                 </Button>
               </Card>
-              {item.edit && <Card><Form name="horizontal_topic" layout="inline" onFinish={()=>onFinish(id,index)}>
-      <Form.Item
-        name="topic"
-        rules={[
-          {
-            required: true,
-            message: "سرفصل را وارد کنید!",
-          },
-        ]}>
-        <label htmlFor="username">سرفصل</label>
-        <Input onChange={(e)=>setTopic(e.target.value)}/>
-      </Form.Item>{" "}
-      <Form.Item
-        name="description"
-        rules={[
-          {
-            required: true,
-            message: "توضیحات را وارد کنید!",
-          },
-        ]}>
-        <label htmlFor="username">توضیحات</label>
-        <Input.TextArea onChange={(e)=>setDescription(e.target.value)}/>
-      </Form.Item>{" "}
-      <Form.Item style={{float:"left"}}>
-        <Button type="submit" >ثبت</Button>
-      </Form.Item>
-    </Form></Card>}
+              {item.edit && (
+                <Card>
+                  <Form
+                    name="horizontal_topic"
+                    layout="inline"
+                    onSubmit={() => onFinishHandler(id, index)}>
+                    <Form.Item
+                      name="topic"
+                      rules={[
+                        {
+                          required: true,
+                          message: "سرفصل را وارد کنید!",
+                        },
+                      ]}>
+                      <label htmlFor="username">سرفصل</label>
+                      <Input onChange={(e) => setTopic(e.target.value)} />
+                    </Form.Item>{" "}
+                    <Form.Item
+                      name="description"
+                      rules={[
+                        {
+                          required: true,
+                          message: "توضیحات را وارد کنید!",
+                        },
+                      ]}>
+                      <label htmlFor="username">توضیحات</label>
+                      <Input.TextArea
+                        onChange={(e) => setDescription(e.target.value)}
+                      />
+                    </Form.Item>{" "}
+                    <Form.Item style={{ float: "left" }}>
+                      <Button onClick={() => onFinishHandler(id, index)}>
+                        ثبت
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                </Card>
+              )}
             </Col>
           ))
         ) : (
