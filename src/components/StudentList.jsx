@@ -11,9 +11,9 @@ class StudentList extends Component {
         <Col span={24}>
           <StudentTable />
         </Col>
-        <Col span={24}>
+        {/* <Col span={24}>
           <SentDocuments />
-        </Col>
+        </Col> */}
       </Row>
     );
   }

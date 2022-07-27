@@ -65,14 +65,9 @@ class StudentTable extends Component {
         key: "fatherName",
       },
       {
-        title: "",
-        dataIndex: "link",
-        key: "link",
-        render: (link) => (
-          <Link to={link}>
-            <i className="far fa-comment student-link"></i>
-          </Link>
-        ),
+        title:"درس",
+        dataIndex:"course",
+        key:"course"
       },
     ],
     students: [
@@ -84,6 +79,7 @@ class StudentTable extends Component {
         studentCode: "99121033111008",
         acceptedDiscipline: "نرم افزار",
         fatherName: "علی",
+        course:"ریاضی1",
         link: "#",
         key: "1",
       },
@@ -95,6 +91,7 @@ class StudentTable extends Component {
         studentCode: "99121033111025",
         acceptedDiscipline: "نرم افزار",
         fatherName: "رضا",
+        course:"برنامه نویسی پیشرفته1",
         link: "#",
         key: "2",
       },
@@ -106,6 +103,7 @@ class StudentTable extends Component {
         studentCode: "99121033111008",
         acceptedDiscipline: "نرم افزار",
         fatherName: "علی",
+        course:"ریاضی1",
         link: "#",
         key: "3",
       },
@@ -117,6 +115,7 @@ class StudentTable extends Component {
         studentCode: "99121033111025",
         acceptedDiscipline: "نرم افزار",
         fatherName: "رضا",
+        course:"ریاضی 2",
         link: "#",
         key: "4",
       },
@@ -168,20 +167,20 @@ class StudentTable extends Component {
         onClick={() => this.setState({ filterVisable: true })}>
         <Search
           className="student-table-search"
-          placeholder="کد ملی، شماره دانشجویی،نام دانشجو"
+          placeholder="نام درس"
           onChange={this.handleSearch}
         />
-        <Radio.Group
+        {/* <Radio.Group
           value={acceptedRadio}
           onChange={this.handleacceptedRadioChange}>
           <Radio.Button value="all">همه</Radio.Button>
           <Radio.Button value="accepted">تایید شده</Radio.Button>
           <Radio.Button value="notAccepted">تایید نشده</Radio.Button>
-        </Radio.Group>
-        <Radio.Group value={degreeRadio} onChange={this.handleDegreeChange}>
+        </Radio.Group> */}
+        {/* <Radio.Group value={degreeRadio} onChange={this.handleDegreeChange}>
           <Radio.Button value="associate">کاردانی</Radio.Button>
           <Radio.Button value="bachelor">کارشناسی</Radio.Button>
-        </Radio.Group>
+        </Radio.Group> */}
         <div className="filter-actions-wrapper">
           <Button
             type="link"

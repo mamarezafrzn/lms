@@ -46,3 +46,19 @@
 .divider {
   margin-bottom: 10px !important;
 }
+
+/* added */
+.avatar{
+  margin-bottom: 0.5px;
+  float: right;
+  clear: both;
+}
+.btnUpload{
+  float: right;
+  clear: both;
+  margin-bottom: 2rem;
+}
+.btnUpload img{
+  width: 12px;
+  height: 12px;
+}

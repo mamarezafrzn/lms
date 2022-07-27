@@ -22,7 +22,7 @@ const AdminSider = () => {
               <span className="nav-text">لیست دانشجویان</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="2">
+          {/* <Menu.Item key="2">
             <Link to="/admin/upload-sanjesh">
               <i className="fas fa-upload sider-icons"></i>
               <span className="nav-text">آپلود فایل های سنجش</span>
@@ -39,7 +39,7 @@ const AdminSider = () => {
               <i className="fas fa-user-headset sider-icons"></i>
               <span className="nav-text">پشتیبانی دانشجو</span>
             </Link>
-          </Menu.Item>
+          </Menu.Item> */}
           <Menu.Item key="5">
             <Link to="/admin/admin-courses">
               <i className="fas fa-book-open sider-icons"></i>

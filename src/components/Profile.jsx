@@ -10,10 +10,29 @@ import {
   Form,
   Input,
   Modal,
+  message,
+  Upload,
 } from "antd";
+
 import CardContainer from "./common/CardContainer";
 import "../styles/components/user-card.scss";
 import { useState } from "react";
+import { UploadOutlined } from "@ant-design/icons";
+
+const uploadProps = {
+  beforeUpload: (file) => {
+    const isPNG = file.type === "image/png";
+
+    if (!isPNG) {
+      message.error(`${file.name} is not a png file`);
+    }
+
+    return isPNG || Upload.LIST_IGNORE;
+  },
+  onChange: (info) => {
+    console.log(info.fileList);
+  },
+};
 
 const Profile = () => {
   const [user, setUser] = useState({
@@ -56,16 +75,15 @@ const Profile = () => {
     setNewEmail(event.target.value);
   };
   const handleEmailEdit = () => {
-    const pattern = /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
-    const result = pattern.test(newEmail)
+    const pattern =
+      /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z]{3,9}[\.][a-z]{2,5}/g;
+    const result = pattern.test(newEmail);
     if (newEmail.length > 0) {
-      if(result){
+      if (result) {
         setUser({ ...user, email: newEmail });
         setEmailEdit(false);
         setNewEmail("");
       }
-      
-
     }
   };
 
@@ -84,19 +102,25 @@ const Profile = () => {
     }
   };
 
-
   return (
     <div>
       <BackBtn to="/student" />
       <CardContainer
         titleAlign="center"
         title={
-          <Avatar
-            style={{ marginBottom: "2rem" }}
-            className="avatar"
-            icon="user"
-            size={100}
-          />
+          <Upload {...uploadProps}>
+            <Avatar
+              className="avatar"
+              icon="user"
+              size={110}
+            />
+            <Button className="btnUpload">
+              {" "}
+              <UploadOutlined size={20}/>
+           
+              آپلود عکس{" "}
+            </Button>
+          </Upload>
         }
         bordered={false}
         style={{
@@ -174,7 +198,6 @@ const Profile = () => {
                           name="email"
                           label="ایمیل جدید"
                           rules={[
-   
                             {
                               required: true,
                               message: "Please input your E-mail!",
